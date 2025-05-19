@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results for <%= player %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <% if (data.body && data.body.player && data.body.player.playerStats) { 
+       const stats = data.body.player.playerStats;
+       const info = data.body.player;
+  %>
+    <h1><%= info.firstName %> <%= info.lastName %> — <%= info.team %></h1>
+
+    <h2>2024 Batting Stats</h2>
+    <ul>
+      <li><strong>Batting Average:</strong> <%= stats.avg %></li>
+      <li><strong>Slugging Percentage:</strong> <%= stats.slg %></li>
+      <li><strong>OPS:</strong> <%= stats.ops %></li>
+      <li><strong>At Bats:</strong> <%= stats.ab %></li>
+      <li><strong>RBIs:</strong> <%= stats.rbi %></li>
+      <li><strong>Runs:</strong> <%= stats.r %></li>
+    </ul>
+  <% } else { %>
+    <h1>No stats found for "<%= player %>"</h1>
+    <p>Please check the spelling or try another player.</p>
+  <% } %>
+
+  <a href="/">Search another player</a>
+</body>
+</html>

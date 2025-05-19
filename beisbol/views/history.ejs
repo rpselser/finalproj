@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search History</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Search History</h1>
+  <ul>
+    <% history.forEach(entry => { %>
+      <li><strong><%= entry.name %></strong> — <%= new Date(entry.timestamp).toLocaleString() %></li>
+    <% }) %>
+  </ul>
+  <a href="/">Back to Search</a>
+</body>
+</html>
