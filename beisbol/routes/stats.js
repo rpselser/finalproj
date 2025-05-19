@@ -35,15 +35,14 @@ router.post('/search', async (req, res) => {
       timestamp: new Date(),
       result: response.data
     });
-
+    console.log("response:", response.data);
     res.render('result', { data: response.data, player });
   } catch (error) {
     console.error(error);
-    res.send('Error fetching data.');
+    res.send('error fetching');
   }
 });
 
-// ✅ NEW ROUTE TO SHOW HISTORY
 router.get('/history', async (req, res) => {
   try {
     const db = await connectDB();
@@ -55,7 +54,7 @@ router.get('/history', async (req, res) => {
 
     res.render('history', { history });
   } catch (err) {
-    res.send("Error retrieving history: " + err.message);
+    res.send("error getting search histroy " + err.message);
   }
 });
 

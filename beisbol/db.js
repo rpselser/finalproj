@@ -9,7 +9,7 @@ async function connectDB() {
   if (!db) {
     await client.connect();
     db = client.db();
-    console.log("Connected to MongoDB (native driver)");
+    console.log("db connected");
   }
   return db;
 }

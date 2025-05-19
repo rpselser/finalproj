@@ -2,30 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Results for <%= player %></title>
+  <title>Player Profile</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <% if (data.body && data.body.player && data.body.player.playerStats) { 
-       const stats = data.body.player.playerStats;
-       const info = data.body.player;
-  %>
-    <h1><%= info.firstName %> <%= info.lastName %> — <%= info.team %></h1>
+  <% if (data.body && data.body.length > 0) { %>
+    <% const p = data.body[0]; %>
 
-    <h2>2024 Batting Stats</h2>
+    <h1><%= p.longName %> (<%= p.teamAbv %>)</h1>
+    <img src="<%= p.espnHeadshot || p.mlbHeadshot %>" alt="Player Headshot" width="200">
+
+    <h2>Player Profile</h2>
     <ul>
-      <li><strong>Batting Average:</strong> <%= stats.avg %></li>
-      <li><strong>Slugging Percentage:</strong> <%= stats.slg %></li>
-      <li><strong>OPS:</strong> <%= stats.ops %></li>
-      <li><strong>At Bats:</strong> <%= stats.ab %></li>
-      <li><strong>RBIs:</strong> <%= stats.rbi %></li>
-      <li><strong>Runs:</strong> <%= stats.r %></li>
+      <li><strong>Position:</strong> <%= p.pos %></li>
+      <li><strong>Team:</strong> <%= p.team %></li>
+      <li><strong>Jersey #:</strong> <%= p.jerseyNum %></li>
+      <li><strong>Bat:</strong> <%= p.bat %> / <strong>Throw:</strong> <%= p.throw %></li>
+      <li><strong>Height:</strong> <%= p.height %></li>
+      <li><strong>Weight:</strong> <%= p.weight %> lbs</li>
+      <li><strong>Birthdate:</strong> <%= p.bDay %></li>
+      <li><strong>Birthplace:</strong> <%= p.birthPlace %></li>
+    </ul>
+
+    <h2>Link</h2>
+    <ul>
+      <li><a href="<%= p.espnLink %>" target="_blank">ESPN Profile</a></li>
     </ul>
   <% } else { %>
-    <h1>No stats found for "<%= player %>"</h1>
-    <p>Please check the spelling or try another player.</p>
+    <h2>No data found for "<%= player %>"</h2>
+    <p>Check the spelling or try a different player.</p>
   <% } %>
 
-  <a href="/">Search another player</a>
+  <br>
+  <a href="/">Search again</a>
 </body>
 </html>
