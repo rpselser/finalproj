@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const { connectDB } = require('../db');
-require('dotenv').config();
+/*require('dotenv').config();*/
 
 const router = express.Router();
 
