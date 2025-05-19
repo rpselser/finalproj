@@ -49,7 +49,7 @@ router.get('/history', async (req, res) => {
     const history = await db.collection('searchHistory')
       .find()
       .sort({ timestamp: -1 })
-      .limit(10)
+      .limit(12)
       .toArray();
 
     res.render('history', { history });
